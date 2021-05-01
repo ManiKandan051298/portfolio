@@ -12,7 +12,7 @@ def trust_admin_login(request):
         email=request.POST.get('adminGmail')
         password=request.POST.get('adminPassword')
         print(email,password)
-        if email=="1@gmail.com" and password =='hello':
+        if email=="chinamani@gmail.com" and password =='1':
             data={
                 "email":email,
                 "password":password
