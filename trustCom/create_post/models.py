@@ -12,6 +12,7 @@ class Contactdetails(models.Model):
 class Whatwedo(models.Model):
     name = models.CharField(max_length=100)
     content = models.CharField(max_length=100)
+    url=models.CharField(max_length=200)
     image = models.ImageField(upload_to='frontImage')
 
 class Addimage(models.Model):

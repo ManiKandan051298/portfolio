@@ -42,6 +42,7 @@ def detailswhatwedo(request):
         "content":value.content,
         "frontimage":value.image,
         "images":images,
+        "url":value.url,
     }
     return render(request,"index/detailswhatwedo.html",data)
 

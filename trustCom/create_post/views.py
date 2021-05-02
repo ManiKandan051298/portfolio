@@ -87,19 +87,19 @@ def headingcontentimage_submit(request):
         select=request.POST.get('select')
         content=request.POST.get('content')
         myfile = request.FILES['myfile']
+        url=request.POST.get('url')
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
         selection=Whatwedo.objects.all()
-        if content=="":
+        if content=="" and url=="":
             Whatwedo.objects.filter(pk=select).update(image=uploaded_file_url)
             return render(request,'admin_html/headingcontentimage.html',{"msg":"image updated Success fully!!","selection":selection}) 
-        if content=="" and uploaded_file_url=="":
+        if content=="" and uploaded_file_url=="" and url=="":
             return render(request,'admin_html/headingcontentimage.html',{"msg":"no change "}) 
-        Whatwedo.objects.filter(pk=select).update(image=uploaded_file_url,content=content)
+        Whatwedo.objects.filter(pk=select).update(image=uploaded_file_url,content=content,url=url)
         return render(request,'admin_html/headingcontentimage.html',{"msg":"Updated Success fully!!","selection":selection})  
     return HttpResponse("error")
-
 
 def listdelete(request):
     if request.method == 'GET':
